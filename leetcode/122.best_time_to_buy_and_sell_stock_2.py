@@ -4,6 +4,7 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         if not prices or len(prices) == 1:
             return 0
+        # 股票价格一直在降的情况
         elif sorted(prices, reverse=True) == prices:
             return 0
 
