@@ -9,6 +9,8 @@ class Solution:
         if sorted(prices, reverse=True) == prices:
             return 0
 
+        for 
+
 
 
 if __name__ == "__main__":

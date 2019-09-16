@@ -47,3 +47,4 @@ if __name__ == "__main__":
     print(sol.maxSubArray([-2,1,-3,4,-1,2,1,-6,4]))
     print(sol.maxSubArray2([-2,1,-3,4,-1,2,1,-6,4]))
     print(sol.maxSubArray3([-2,1,-3,4,-1,2,1,-6,4]))
+    print(sol.maxSubArray3([1,-2,1]))

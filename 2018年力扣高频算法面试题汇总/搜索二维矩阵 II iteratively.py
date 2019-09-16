@@ -27,8 +27,6 @@ class Solution:
             else:
                 start_row += 1
         return False
-        
-
 
 
 if __name__ == "__main__":
