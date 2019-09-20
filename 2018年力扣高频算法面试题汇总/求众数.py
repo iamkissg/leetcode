@@ -16,6 +16,14 @@ class Solution:
         else:
             return None
 
+    def majorityElement(self, nums: List[int]) -> int:
+        '''20190920'''
+        if not nums:
+            return None
+
+        nums.sort()
+        return nums[len(nums)//2]
+
 
 if __name__ == "__main__":
     sol = Solution()

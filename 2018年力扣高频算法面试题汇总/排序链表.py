@@ -68,7 +68,6 @@ class Solution:
         pHead = ListNode(None)  # 头指针
         pHead.next = cur
         while left_head or right_head:
-            # 题设要求从小到大
             if left_head is None:
                 cur.next = right_head
                 cur, right_head = cur.next, right_head.next

@@ -51,6 +51,35 @@ class Solution:
 
         return res
 
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        '''20190920'''
+        # 一个链表为空的情况下, 返回另一条链表
+        if not l1:
+            return l2
+        if not l2:
+            return l1
+
+        ha, hb = l1, l2
+        phc = ListNode(None)  # 作合合并后链表的 head 的头指针
+        if ha.val < hb.val:
+            hc, ha = ha, ha.next
+        else:
+            hc, hb = hb, hb.next
+        phc.next = hc
+
+        while ha or hb:
+            if not ha:
+                hc.next, hb = hb, hb.next
+            elif not hb:
+                hc.next, ha = ha, ha.next
+            elif ha.val < hb.val:
+                hc.next, ha = ha, ha.next
+            else:
+                hc.next, hb = hb, hb.next
+            hc = hc.next    
+
+        return phc.next
+
 if __name__ == "__main__":
     pass
             
