@@ -1,26 +1,37 @@
-from math import ceil
+from math import ceil, isclose
 
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x < 0:
-            raise ValueError('Compute square root on negative integer')
+        '''20190921'''
+        # 56 ms	13.9 MB	Python3
         if x <= 1:
             return x
 
-        start = 1
-        end = x//2+1
-        mid = (start + end) // 2
-        while True:
-            if start + 1 == end:
-                return start
-            if mid ** 2 == x:
-                return mid
-            if mid ** 2 > x:
-                end = mid
-                mid = (start + end) // 2
-            elif mid ** 2 < x:
+        start = 0
+        end = x
+        while start != end-1:
+            mid = (start + end) // 2
+            # 这一条件能保证了 end 大于根号 x, 于是等到循环结束的时候, start 正是要找的
+            if mid ** 2 <=x:
                 start = mid
-                mid = (start + end) // 2
+            else:
+                end = mid
+        return start
+
+    def mySqrt(self, x: int) -> int:
+        '''20190921'''
+        if x <= 1:
+            return x
+
+        cur = 1
+        while True:
+            cur, pre = (cur+x/cur)/2, cur
+
+            # 运行速度取决于精度
+            # 48 ms	13.8 MB	Python3, default, rel_tol=1e-9, 相对误差
+            # 68 ms	13.9 MB	Python3, default, rel_tol=1e-9, 相对误差
+            if isclose(cur, pre):
+                return int(cur)
 
 
 
