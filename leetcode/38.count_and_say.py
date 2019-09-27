@@ -1,6 +1,9 @@
 class Solution:
     
     def __init__(self):
+        '''
+        92 ms	13.8 MB	Python3
+        '''
         seqs = ['1']
         for i in range(2, 31):
             seq = seqs[-1]

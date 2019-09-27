@@ -7,15 +7,15 @@ class Solution:
             return 0
         elif sorted(prices, reverse=True) == prices:
             return 0
-        else:
-            low = prices[0]
-            max_profit = 0
-            for p in prices:
-                if p < low:
-                    low = p
-                    continue
-                max_profit = max(p - low, max_profit)
-            return max_profit
+
+        low = prices[0]
+        max_profit = 0
+        for p in prices:
+            if p < low:
+                low = p
+                continue
+            max_profit = max(p - low, max_profit)
+        return max_profit
 
 
 

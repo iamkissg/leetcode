@@ -28,13 +28,20 @@ class Solution:
         return max_val
 
     def maxSubArray2(self, nums: List[int]) -> int:
+        '''
+        执行用时 :88 ms, 在所有 Python3 提交中击败了78.03% 的用户
+        内存消耗 :14.7 MB, 在所有 Python3 提交中击败了5.04%的用户
+        '''
         for i in range(1, len(nums)):
             nums[i] = max(nums[i-1]+nums[i], nums[i])
         print(nums)
         return max(nums)
 
     def maxSubArray3(self, nums: List[int]) -> int:
-        """效率上还不如方法2, 区别在于一个每次和 0 比较, 一个每次自己 max"""
+        '''
+        执行用时 :88 ms, 在所有 Python3 提交中击败了78.03% 的用户
+        内存消耗 :14.7 MB, 在所有 Python3 提交中击败了5.04%的用户
+        '''
         for i in range(1, len(nums)):
             if nums[i-1] > 0:
                 nums[i] += nums[i-1]
