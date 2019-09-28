@@ -14,8 +14,32 @@ class Solution:
         #         p2 -= 1
         # return s
 
-    
     def reverseParentheses(self, s: str) -> str:
+        '''
+        20190928
+        执行用时 :40 ms, 在所有 Python3 提交中击败了95.30% 的用户
+        内存消耗 :13.9 MB, 在所有 Python3 提交中击败了100.00%的用户
+
+        如此写法, 真的太舒服了!
+        '''
+        result = ['']
+        for i, c in enumerate(s):
+            if c not in {'(', ')'}:
+                result[-1] += c
+            elif c == '(':
+                result.append('')
+            elif c == ')':
+                popped = result.pop()
+                result[-1] += popped[::-1]
+        return result[0]
+    
+    def reverseParentheses_old(self, s: str) -> str:
+        '''
+        20190915
+        60 ms	14 MB	Python3
+
+        很复杂的解法
+        '''
         sign = 0
         normal_stack = []
         reverse_stack = []
@@ -53,6 +77,7 @@ if __name__ == "__main__":
     sol = Solution()
     print(sol.reverseParentheses("(abcd)"))
     print(sol.reverseParentheses("(u(love)i)"))
+    assert sol.reverseParentheses("(ed(et(oc))el)") == "leetcode"
     assert sol.reverseParentheses("(ed(et(oc))el)") == "leetcode"
     print(sol.reverseParentheses("(ed(et(oc))el)"))
     assert sol.reverseParentheses("a(bcdefghijkl(mno)p)q") == "apmnolkjihgfedcbq"

@@ -40,7 +40,7 @@ class Solution:
 
             # 自然划分的情况下, lmax1 < rmax1, lmax2 < rmin2, 而中位数需要满足将两个数组都分成了两个部分, 所以需要满足 lmax1 < rmin2, lmax2 < rmin1
             # 极端情况下, 第一个数组的数字都大于中位数, 为了使 lmax1<rmin2, 直接给 lmax1 赋全局最小值
-            # else 之后的语句是从虚拟数组中直接计算原数组中对应位置的数字, 是一个 trick
+            # else 之后的语句是从虚拟数组中直接计算原数组中对应位置的数字
             lmax1 = INT_MIN if c1 == 0 else nums1[(c1-1)//2]
             # 极端情况下, 第一个数组的数字都小于中位数, 为了使 lmax2<rmin1, 直接给 rmin1 赋全局最大值
             rmin1 = INT_MAX if c1 == 2*n else nums1[c1//2]
