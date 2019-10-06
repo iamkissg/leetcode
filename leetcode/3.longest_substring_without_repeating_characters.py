@@ -23,7 +23,7 @@ class Solution:
         return max_len
 
 
-    def lengthOfLongestSubstring_slide_window(self, s: str) -> int:
+    def lengthOfLongestSubstring_slide_window2(self, s: str) -> int:
         '''
         20190922
         通过	92 ms	13.9 MB	Python3
@@ -47,6 +47,31 @@ class Solution:
                 p2 += 1
         return max_len
 
+
+    def lengthOfLongestSubstring_slide_window(self, s: str) -> int:
+        '''
+        20191005
+        执行用时 :64 ms, 在所有 Python3 提交中击败了98.42% 的用户
+        内存消耗 :14 MB, 在所有 Python3 提交中击败了5.01%的用户
+        '''
+        if not s:
+            return 0
+        l = 0
+        n = len(s)
+
+        used_char_set = set()
+        max_len = 0
+        for r in range(n):
+            while s[r] in used_char_set:
+                if s[l] in used_char_set:
+                    used_char_set.remove(s[l])
+                    l += 1
+
+            used_char_set.add(s[r])
+            cur_len = len(used_char_set)
+            if cur_len > max_len:
+                max_len = cur_len
+        return max_len
 
 if __name__ == "__main__":
     sol = Solution()
