@@ -8,17 +8,17 @@ class TreeNode:
         self.right = None
 
 class Solution:
-    def inorderTraversal(self, root: TreeNode) -> List[int]:
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
             return []
+        
+        return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
 
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
-
-    def inorderTraversal_iteratively(self, root: TreeNode) -> List[int]:
+    def postorderTraversal_iteratively(self, root: TreeNode) -> List[int]:
         '''
         20191009
-        40 ms	13.8 MB	Python3
 
+        48 ms	13.9 MB	Python3
         使用 stack 来进行树的 DFS
         '''
         if not root:
@@ -30,8 +30,6 @@ class Solution:
 
         while stack:
             node = stack.pop()
-            if not node:
-                continue
 
             right = node.right
             left = node.left
@@ -45,12 +43,12 @@ class Solution:
                 res.append(node.val)
                 continue
 
-            if right:
-                stack.append(right)
             # 非叶节点第一次被遍历到, 用于取出左右节点, 同时自己再次入栈
             if node not in visited:
                 visited.add(node)
                 stack.append(node)
+            if right:
+                stack.append(right)
             if left:
                 stack.append(left)
         return res
