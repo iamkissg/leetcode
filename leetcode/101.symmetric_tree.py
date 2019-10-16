@@ -1,3 +1,5 @@
+from queue import deque
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -43,7 +45,6 @@ class Solution:
     #     return True
 
     def isSymmetric(self, root: TreeNode) -> bool:
-        from queue import deque
 
         if not root:
             return True
@@ -53,7 +54,7 @@ class Solution:
         Q = deque()
         Q.append(root.left)
         Q.append(root.right)
-        while len(Q):
+        while Q:
             left = Q.popleft()
             right = Q.popleft()
             if (left and not right) or (right and not left):
