@@ -2,7 +2,11 @@ from typing import List
 
 
 class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
+    def removeDuplicates_old(self, nums: List[int]) -> int:
+        '''
+        老代码
+        132 ms	15.2 MB	Python3
+        '''
         if not nums:
             return 0
 
@@ -16,6 +20,22 @@ class Solution:
                 del nums[pos+1]
                 continue
             pos += 1
+        return len(nums)
+
+    def removeDuplicates(self, nums: List[int]) -> int:
+        '''
+        20191021
+        124 ms	15.3 MB	Python3
+        '''
+        if not nums:
+            return 0
+        
+        i = 1
+        while i < len(nums):
+            if nums[i] == nums[i-1]:
+                nums.pop(i)
+            else:
+                i += 1
         return len(nums)
 
 
