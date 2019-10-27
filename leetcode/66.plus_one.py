@@ -3,14 +3,19 @@ from typing import List
 
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        if not digits:
-            raise ValueError('Empty list')
 
-        jinwei = 1
-        lend = len(digits)
-        for i in range(len(digits)):
-            jinwei, digits[lend-i-1] = divmod(digits[lend-i-1]+jinwei, 10)
-        return [jinwei] + digits if jinwei else digits
+        '''
+        20191025
+        48 ms	13.7 MB	Python3
+
+        其实没啥好说的, 保持进位吧
+        '''
+        carry = 1
+        res = []
+        for a in digits[::-1]:
+            carry, val = divmod(a+carry, 10)
+            res.append(val)
+        return res[::-1] if not carry else [carry] + res[::-1]
 
 
 if __name__ == "__main__":

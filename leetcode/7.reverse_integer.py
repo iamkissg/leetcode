@@ -27,6 +27,21 @@ class Solution:
             result = -result
         return result if -2**31 <= result <= 2**31-1 else 0
 
+    def reverse_20191026(self, x: int) -> int:
+        '''
+        20191026
+
+        40 ms	13.8 MB	Python3
+        '''
+        res = 0
+        sign = 1 if x >= 0 else -1
+        av = abs(x)  # absolute value
+        while av:
+            av, r = divmod(av, 10)
+            res = res * 10 + r
+        res *= sign
+        return res if -2147483648 <= res <= 2147483647 else 0
+
 if __name__ == "__main__":
     sol = Solution()
     print(sol.reverse(123))

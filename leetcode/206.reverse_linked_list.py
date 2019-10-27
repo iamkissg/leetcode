@@ -14,12 +14,15 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        cur, prev = head, None
+        cur, pre = head, None
 
         while cur:
             # 神奇的连等式, 先执行等号右边, 把值都准备好了, 然后左边分别赋值
-            cur.next, prev, cur = prev, cur, cur.next
-        return cur
+            # 通过
+            cur.next, pre, cur = pre, cur, cur.next
+            # 报错
+            # cur, cur.next, pre = cur.next, pre, cur
+        return pre
 
 
 if __name__ == "__main__":

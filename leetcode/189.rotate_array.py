@@ -19,12 +19,11 @@ class Solution:
         """最快"""
         if not nums or len(nums) == 1:
             return
-        else:
-            len_nums = len(nums)
-            k = k % len_nums
-            # 更新了 nums 的引用, 但旧的 nums 的值不变
-            # nums = nums[len_nums-k:] + nums[:len_nums-k]
-            nums[:] = nums[len_nums-k:] + nums[:len_nums-k]
+
+        # k 可能大于数组的长度
+        n = len(nums)
+        k = k % n
+        nums[:] = nums[-k:] + nums[:-k]
 
     def rotate3(self, nums: List[int], k: int) -> None:
         if not nums or len(nums) == 1:
